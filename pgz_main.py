@@ -5,33 +5,32 @@ import pgzrun
 screen_size = WIDTH, HEIGHT = 1280, 720
 
 # game setup
-player = Actor('alien')
-player_speed = 5
-player.pos = player_x, player_y = WIDTH / 2, HEIGHT / 2
-player.angle = 0
-player_angular_speed = 1
-
 meteor = Actor('meteorbrown_big3')
 meteor_speed = meteor.speed_x, meteor.speed_y = 3, 3
-meteor.pos = meteor_x, meteor_y = WIDTH // 2, HEIGHT // 2
+meteor.pos = meteor_x, meteor_y = WIDTH // 4, HEIGHT // 4
 meteor.angle = 0
 meteor_angular_speed = 3
 
+player = Actor('alien')
+player_speed = 5
+player.pos = player_x, player_y = WIDTH // 2, HEIGHT // 2
+player.angle = 0
+player_angular_speed = 1
 
 def draw():
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("purple")
-
-    # render text
-    screen.draw.text(" X: {:04d};  Y: {:04d}".format(int(meteor.x), int(meteor.y)), (20, 20))
-    screen.draw.text("vX: {:04d}; vY: {:04d}".format(int(meteor.speed_x), int(meteor.speed_y)), (20, 40))
-    screen.draw.text(" X: {:04d};  Y: {:04d}".format(int(player.x), int(player.y)), (200, 20))
 
     # render meteor
     meteor.draw()
 
     # render player
     player.draw()
+
+    # render text
+    screen.draw.text(" X: {:04d};  Y: {:04d}".format(int(meteor.x), int(meteor.y)), (20, 20))
+    screen.draw.text("vX: {:04d}; vY: {:04d}".format(int(meteor.speed_x), int(meteor.speed_y)), (20, 40))
+    screen.draw.text(" X: {:04d};  Y: {:04d}".format(int(player.x), int(player.y)), (200, 20))
 
 def update():
     # rotate meteor
